@@ -3,10 +3,11 @@ package com.example.miquido.rss.Fragments
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.miquido.rss.Common.LinksJava
+import com.example.miquido.rss.Common.Links
 import com.example.miquido.rss.R
 import com.example.miquido.rss.interfaces.OverviewFragmentActivityListener
 
@@ -20,8 +21,10 @@ class OverviewFragment: Fragment() {
         val view = inflater?.inflate(R.layout.overview_fragment, container, false)
 
         view?.setOnClickListener {
-            when(it){
-                R.id.technologyNewsBtn -> onItemSelected(LinksJava.)
+            when(it.id){
+                R.id.technologyNewsBtn -> onItemSelected(Links.TECHNOLOGY_NEWS_LINK)
+                R.id.scienceNewsBtn -> onItemSelected(Links.SCIENCE_NEWS_LINK)
+                R.id.sportNewsBtn -> onItemSelected(Links.SPORT_NEWS_LINK)
             }
         }
 
@@ -38,6 +41,7 @@ class OverviewFragment: Fragment() {
     }
 
     fun onItemSelected(link: String){
+        Log.d("OVERVIEWINFO", "wybrales: " + link)
         listener?.onClickItem(link)
     }
 

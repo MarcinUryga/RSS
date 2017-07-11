@@ -10,6 +10,7 @@ import android.view.MenuItem
 import com.example.miquido.rss.Adapter.FeedAdapter
 import com.example.miquido.rss.Common.HTTPDataHandler
 import com.example.miquido.rss.Model.RSSObject
+import com.example.miquido.rss.interfaces.OverviewFragmentActivityListener
 import com.example.miquido.rss.interfaces.WebService
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,8 +19,7 @@ import retrofit.RestAdapter
 import retrofit.RetrofitError
 import retrofit.client.Response
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(), OverviewFragmentActivityListener {
     private val RSS_link = "http://rss.nytimes.com/services/xml/rss/nyt/Science.xml"
     private val RSS_to_JSON_API = "https://api.rss2json.com/v1/api.json?rss_url="
 
@@ -107,6 +107,10 @@ class MainActivity : AppCompatActivity() {
         if(item.itemId == R.id.menu_refresh)
             loadRSS()
         return true
+    }
+
+    override fun onClickItem(link: String) {
+        Log.d("OK", link)
     }
 
 }
