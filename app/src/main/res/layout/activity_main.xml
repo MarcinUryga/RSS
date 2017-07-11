@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.miquido.rss.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mainTolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

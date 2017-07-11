@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.example.miquido.rss.Common.Links
 import com.example.miquido.rss.R
 import com.example.miquido.rss.interfaces.OverviewFragmentActivityListener
+import kotlinx.android.synthetic.main.overview_fragment.*
 
 /**
  * Created by miquido on 11.07.2017.
@@ -20,15 +21,21 @@ class OverviewFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.overview_fragment, container, false)
 
-        view?.setOnClickListener {
-            when(it.id){
-                R.id.technologyNewsBtn -> onItemSelected(Links.TECHNOLOGY_NEWS_LINK)
-                R.id.scienceNewsBtn -> onItemSelected(Links.SCIENCE_NEWS_LINK)
-                R.id.sportNewsBtn -> onItemSelected(Links.SPORT_NEWS_LINK)
-            }
-        }
-
         return view
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+
+
+        technologyNewsBtn.setOnClickListener{
+            onItemSelected(Links.TECHNOLOGY_NEWS_LINK)
+        }
+        scienceNewsBtn.setOnClickListener {
+            onItemSelected(Links.SCIENCE_NEWS_LINK)
+        }
+        europeanNewsBtn.setOnClickListener {
+            onItemSelected(Links.EUROPEAN_NEWS_LINK)
+        }
     }
 
     override fun onAttach(context: Context?) {
@@ -41,7 +48,6 @@ class OverviewFragment: Fragment() {
     }
 
     fun onItemSelected(link: String){
-        Log.d("OVERVIEWINFO", "wybrales: " + link)
         listener?.onClickItem(link)
     }
 

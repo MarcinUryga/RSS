@@ -1,4 +1,4 @@
-package com.example.miquido.rss.interfaces;
+package com.example.miquido.rss.WebServicesAdapterPattern;
 
 import android.telecom.Call;
 
@@ -14,7 +14,7 @@ import retrofit.http.GET;
 public interface WebService {
 
     @GET("/services/xml/rss/nyt/Science.xml")
-    void getScienceData(Callback<RSSObject> pResponse);
+    void getScienceNewsData(Callback<RSSObject> pResponse);
 
     @GET("/services/xml/rss/nyt/Europe.xml")
     void getEuropeNewsData(Callback<RSSObject> pResponse);
