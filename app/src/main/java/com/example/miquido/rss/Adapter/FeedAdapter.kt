@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.miquido.rss.Model.RSSObject
 import com.example.miquido.rss.R
 import com.example.miquido.rss.interfaces.ItemClickListener
+import kotlinx.android.synthetic.main.item.view.*
 
 /**
  * Created by miquido on 10.07.2017.
@@ -25,10 +26,13 @@ class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.On
     private var itemClickListener : ItemClickListener?=null
 
     init{
-        txtTitle = itemView.findViewById<TextView>(R.id.txtTitle)
+        txtTitle = itemView.txtTitle
+        txtPubdate = itemView.txtPubdate
+        txtContent = itemView.txtContent
+        /*txtTitle = itemView.findViewById<TextView>(R.id.txtTitle)
         txtPubdate = itemView.findViewById<TextView>(R.id.txtPubdate)
         txtContent = itemView.findViewById<TextView>(R.id.txtContent)
-
+*/
         itemView.setOnClickListener(this)
         itemView.setOnLongClickListener(this)
     }
@@ -38,11 +42,11 @@ class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.On
     }
 
     override fun onClick(v: View?) {
-        itemClickListener?.let { it.onClick(v,adapterPosition, false) }
+        itemClickListener?.let { it.onClick(v, adapterPosition, false) }
     }
 
     override fun onLongClick(v: View?): Boolean {
-        itemClickListener?.let{ it.onClick(v,adapterPosition, true) }
+        itemClickListener?.let{ it.onClick(v, adapterPosition, true) }
 
         return true
     }
