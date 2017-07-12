@@ -28,7 +28,7 @@ class OverviewFragment: Fragment() {
         newsBtn.setOnClickListener {
             onItemSelected("news")
         }
-
+/*
         technologyNewsBtn.setOnClickListener{
             onItemSelected(Links.TECHNOLOGY_NEWS_LINK)
         }
@@ -38,6 +38,7 @@ class OverviewFragment: Fragment() {
         europeanNewsBtn.setOnClickListener {
             onItemSelected(Links.EUROPEAN_NEWS_LINK)
         }
+*/
     }
 
     override fun onAttach(context: Context?) {

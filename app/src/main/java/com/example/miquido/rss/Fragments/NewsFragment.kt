@@ -59,4 +59,5 @@ class NewsFragment(private val link: String): Fragment(), CallbackRSS {
             news.start()
         return true
     }
+
 }

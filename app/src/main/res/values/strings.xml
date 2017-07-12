@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">RSS</string>
-    <string name="text_favorites">Favourites</string>
-    <string name="text_schedules">Schedules</string>
-    <string name="text_music">Music</string>
+    <string name="text_europe">Europe news</string>
+    <string name="text_technology">Technology news</string>
+    <string name="text_science">Science news</string>
 </resources>

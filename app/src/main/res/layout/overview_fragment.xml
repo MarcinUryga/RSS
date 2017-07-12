@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <Button
         android:id="@+id/newsBtn"
         android:layout_marginTop="80dp"
@@ -11,34 +10,5 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-
-    <Button
-        android:id="@+id/technologyNewsBtn"
-        android:layout_marginTop="10dp"
-        android:text="technology news"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/scienceNewsBtn"
-        android:layout_marginTop="10dp"
-        android:text="science news"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/europeanNewsBtn"
-        android:layout_marginTop="10dp"
-        android:text="european news"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-
-
 
 </LinearLayout>

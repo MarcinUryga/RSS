@@ -2,9 +2,7 @@ package com.example.miquido.rss
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.example.miquido.rss.Fragments.NewsFragment
 import com.example.miquido.rss.Fragments.OverviewFragment
 import com.example.miquido.rss.interfaces.OverviewFragmentActivityListener
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity(), OverviewFragmentActivityListener {
     override fun onClickItem(link: String) {
 
         if(link.equals("news")){
-            val activityIntent = Intent(baseContext, Main2Activity::class.java)
+            val activityIntent = Intent(baseContext, NewsActivity::class.java)
             baseContext.startActivity(activityIntent)
         }
 
