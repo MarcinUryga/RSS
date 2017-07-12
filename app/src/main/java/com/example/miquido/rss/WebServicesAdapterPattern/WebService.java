@@ -1,11 +1,11 @@
 package com.example.miquido.rss.WebServicesAdapterPattern;
 
-import android.telecom.Call;
-
 import com.example.miquido.rss.Model.RSSObject;
 
-import retrofit.Callback;
-import retrofit.http.GET;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by miquido on 11.07.2017.
@@ -13,6 +13,10 @@ import retrofit.http.GET;
 
 public interface WebService {
 
+    @GET("api.json/")
+    Call<RSSObject> listNews(@Query("rss_url") String link);
+
+    /*
     @GET("/services/xml/rss/nyt/Science.xml")
     void getScienceNewsData(Callback<RSSObject> pResponse);
 
@@ -21,4 +25,5 @@ public interface WebService {
 
     @GET("/services/xml/rss/nyt/Technology.xml")
     void getTechnologyData(Callback<RSSObject> pResponse);
+*/
 }

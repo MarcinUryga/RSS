@@ -8,22 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.miquido.rss.Model.Item
 import com.example.miquido.rss.Model.RSSObject
 import com.example.miquido.rss.R
-import com.example.miquido.rss.interfaces.ItemClickListener
 import kotlinx.android.synthetic.main.item.view.*
+import retrofit2.Call
 
 /**
- * Created by miquido on 10.07.2017.
- */
+* Created by MiQUiDO on 12.07.2017.
+* <p>
+* Copyright 2017 MiQUiDO <http://www.miquido.com/>. All rights reserved.
+*/
 
-class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener, View.OnLongClickListener {
+class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     var txtTitle: TextView
     var txtPubdate: TextView
     var txtContent: TextView
 
-    private var itemClickListener : ItemClickListener?=null
 
     init{
         txtTitle = itemView.txtTitle
@@ -33,54 +35,37 @@ class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.On
         txtPubdate = itemView.findViewById<TextView>(R.id.txtPubdate)
         txtContent = itemView.findViewById<TextView>(R.id.txtContent)
 */
-        itemView.setOnClickListener(this)
-        itemView.setOnLongClickListener(this)
     }
 
-    fun setItemClickListener(itemClickListener: ItemClickListener){
-        this.itemClickListener = itemClickListener
+    fun bindFun(item: Item){
+        txtTitle.text = item.title
+        txtContent.text = item.content
+        txtPubdate.text = item.pubDate
     }
 
-    override fun onClick(v: View?) {
-        itemClickListener?.let { it.onClick(v, adapterPosition, false) }
-    }
-
-    override fun onLongClick(v: View?): Boolean {
-        itemClickListener?.let{ it.onClick(v, adapterPosition, true) }
-
-        return true
-    }
 }
 
-class FeedAdapter(private val rssObject: RSSObject, private val mContext: Context):RecyclerView.Adapter<FeedViewHolder>(){
-
-    private val inflater:LayoutInflater
-
-    init{
-        inflater = LayoutInflater.from(mContext)
-    }
+class FeedAdapter(private val rssObject: RSSObject,
+                  private val context: Context
+    ):RecyclerView.Adapter<FeedViewHolder>(){
 
     override fun getItemCount(): Int {
         return rssObject.items.size
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        holder.txtTitle.text = rssObject.items[position].title
-        holder.txtContent.text = rssObject.items[position].content
-        holder.txtPubdate.text = rssObject.items[position].pubDate
 
-        holder.setItemClickListener(ItemClickListener { view, position, isLongClick ->
+        holder.bindFun(rssObject.items[position])
 
-            if(!isLongClick){
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(rssObject.items[position].link))
-                mContext.startActivity(browserIntent)
-            }
+        holder.itemView.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(rssObject.items[position].link))
+            context.startActivity(browserIntent)
+        }
 
-        })
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FeedViewHolder {
-        val view = inflater.inflate(R.layout.item, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
 
         return FeedViewHolder(view)
     }

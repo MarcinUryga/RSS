@@ -1,9 +1,10 @@
 package com.example.miquido.rss
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuInflater
+import android.util.Log
 import com.example.miquido.rss.Fragments.NewsFragment
 import com.example.miquido.rss.Fragments.OverviewFragment
 import com.example.miquido.rss.interfaces.OverviewFragmentActivityListener
@@ -19,17 +20,12 @@ class MainActivity : AppCompatActivity(), OverviewFragmentActivityListener {
         setContentView(R.layout.activity_main)
 
         mainTolbar.title = "Main Menu"
+
         setSupportActionBar(mainTolbar)
 
         setOverviewFragment()
-/*
-        val linearLayoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager = linearLayoutManager
 
-        loadRSS()
-*/
     }
-
 
     private fun setOverviewFragment() {
         var fragmentTransaction: android.support.v4.app.FragmentTransaction? = fragmentManager.beginTransaction()
@@ -41,6 +37,12 @@ class MainActivity : AppCompatActivity(), OverviewFragmentActivityListener {
     }
 
     override fun onClickItem(link: String) {
+
+        if(link.equals("news")){
+            val activityIntent = Intent(baseContext, Main2Activity::class.java)
+            baseContext.startActivity(activityIntent)
+        }
+
         var fragmentTransaction: android.support.v4.app.FragmentTransaction? = fragmentManager.beginTransaction()
         var currentFragment = NewsFragment(link)
 
@@ -51,9 +53,4 @@ class MainActivity : AppCompatActivity(), OverviewFragmentActivityListener {
         fragmentTransaction?.commit()
     }
 
-   /*
-
-
-
-*/
 }
