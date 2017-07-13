@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), OverviewFragmentActivityListener {
         setSupportActionBar(mainTolbar)
 
         setOverviewFragment()
-
     }
 
     private fun setOverviewFragment() {
