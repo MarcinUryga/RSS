@@ -13,8 +13,11 @@ object Links {
     val EUROPEAN_NEWS_LINK = "http://rss.nytimes.com/services/xml/rss/nyt/Europe.xml"
     val TECHNOLOGY_NEWS_LINK = "http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"
 
+
     //links
     //https://developer.android.com/training/custom-views/create-view.html
     //https://github.com/roughike/BottomBar
     //https://medium.com/@hitherejoe/exploring-the-android-design-support-library-bottom-navigation-drawer-548de699e8e0
+
+    //https://github.com/ittianyu/BottomNavigationViewEx
 }
