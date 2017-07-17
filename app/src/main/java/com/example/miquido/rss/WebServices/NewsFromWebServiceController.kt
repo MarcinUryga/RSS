@@ -1,4 +1,4 @@
-package com.example.miquido.rss.WebServicesAdapterPattern
+package com.example.miquido.rss.WebServices
 
 import com.example.miquido.rss.Common.Links
 import com.example.miquido.rss.Model.RSSObject
@@ -8,12 +8,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 /**
  * Created by marci on 2017-07-11.
  */
-class NewsFromWebServiceController(private val link: String, private val callback: CallbackRSS): Callback<RSSObject> {
+class NewsFromWebServiceController(private val link: String,
+                                   private val callback: CallbackRSS): Callback<RSSObject> {
 
     var rssObject: RSSObject ?= null
     var callRSSObject: Call<RSSObject> ?= null

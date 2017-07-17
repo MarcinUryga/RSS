@@ -26,15 +26,10 @@ class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var txtPubdate: TextView
     var txtContent: TextView
 
-
     init{
         txtTitle = itemView.txtTitle
         txtPubdate = itemView.txtPubdate
         txtContent = itemView.txtContent
-        /*txtTitle = itemView.findViewById<TextView>(R.id.txtTitle)
-        txtPubdate = itemView.findViewById<TextView>(R.id.txtPubdate)
-        txtContent = itemView.findViewById<TextView>(R.id.txtContent)
-*/
     }
 
     fun bindFun(item: Item){

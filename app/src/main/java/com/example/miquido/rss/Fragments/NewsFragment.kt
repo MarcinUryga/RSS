@@ -8,10 +8,10 @@ import android.view.*
 import com.example.miquido.rss.Adapter.FeedAdapter
 import com.example.miquido.rss.Model.RSSObject
 import com.example.miquido.rss.R
-import com.example.miquido.rss.WebServicesAdapterPattern.NewsFromWebServiceController
+import com.example.miquido.rss.WebServices.NewsFromWebServiceController
+import com.example.miquido.rss.database.pojo.News
 import com.example.miquido.rss.interfaces.CallbackRSS
 import kotlinx.android.synthetic.main.news_fragment.*
-import retrofit2.Callback
 
 
 /**
@@ -43,6 +43,15 @@ class NewsFragment(private val link: String): Fragment(), CallbackRSS {
     }
 
     override fun onSuccess(rss: RSSObject) {
+        var newses: MutableList<News> = mutableListOf()
+      /*  rss.items.forEach {
+            var news = News()
+            news.newsTitle = it.title
+            news.newsDate = it.pubDate
+            news.newsContent = it.content
+            newses.add(news)
+        }*/
+
         val adapter = FeedAdapter(rss, context)
         recyclerView.adapter = adapter
         adapter?.notifyDataSetChanged()
