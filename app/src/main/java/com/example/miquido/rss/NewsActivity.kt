@@ -18,6 +18,8 @@ class NewsActivity : AppCompatActivity() {
 
         switchNews(Links.EUROPEAN_NEWS_LINK)
 
+        //bottom_navigation.menu.add()
+
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.action_europe -> switchNews(Links.EUROPEAN_NEWS_LINK)

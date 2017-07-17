@@ -9,4 +9,5 @@ import com.example.miquido.rss.Model.RSSObject
  */
 interface CallbackRSS {
     fun onSuccess(rss: RSSObject)
+    fun updateDataBase(let: RSSObject) {}
 }

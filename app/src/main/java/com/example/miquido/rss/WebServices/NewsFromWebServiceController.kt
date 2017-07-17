@@ -15,7 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NewsFromWebServiceController(private val link: String,
                                    private val callback: CallbackRSS): Callback<RSSObject> {
 
-    var rssObject: RSSObject ?= null
     var callRSSObject: Call<RSSObject> ?= null
     var webService: WebService ?= null
 
@@ -43,8 +42,11 @@ class NewsFromWebServiceController(private val link: String,
     override fun onResponse(call: Call<RSSObject>, response: Response<RSSObject>) {
         callRSSObject = null
         if(response.isSuccessful){
-            rssObject = response.body()
-            callback.onSuccess(rssObject!!)
+            val rssObject = response.body()
+            if (rssObject != null) {
+                callback.onSuccess(rssObject)
+                callback.updateDataBase(response.body()!!)
+            }
         }
     }
 

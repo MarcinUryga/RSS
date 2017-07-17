@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.*
+import android.widget.Toast
 import com.example.miquido.rss.Adapter.FeedAdapter
 import com.example.miquido.rss.Model.RSSObject
 import com.example.miquido.rss.R
 import com.example.miquido.rss.WebServices.NewsFromWebServiceController
+import com.example.miquido.rss.database.MapperToNews
 import com.example.miquido.rss.database.pojo.News
 import com.example.miquido.rss.interfaces.CallbackRSS
 import kotlinx.android.synthetic.main.news_fragment.*
@@ -43,18 +46,22 @@ class NewsFragment(private val link: String): Fragment(), CallbackRSS {
     }
 
     override fun onSuccess(rss: RSSObject) {
-        var newses: MutableList<News> = mutableListOf()
-      /*  rss.items.forEach {
-            var news = News()
-            news.newsTitle = it.title
-            news.newsDate = it.pubDate
-            news.newsContent = it.content
-            newses.add(news)
-        }*/
-
         val adapter = FeedAdapter(rss, context)
         recyclerView.adapter = adapter
         adapter?.notifyDataSetChanged()
+    }
+
+    override fun updateDataBase(rss: RSSObject){
+        //var newses: MutableList<News> = mutableListOf()
+        if(rss!=null) {
+                Toast.makeText(context, rss.toString(), Toast.LENGTH_SHORT).show()
+
+            //Toast.makeText(context, rss.items.size, Toast.LENGTH_SHORT).show()
+        }
+        if(rss==null){
+            Toast.makeText(context, "null", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

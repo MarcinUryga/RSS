@@ -1,5 +1,7 @@
 package com.example.miquido.rss.database
 
+import com.example.miquido.rss.Model.Item
+import com.example.miquido.rss.Model.RSSObject
 import com.example.miquido.rss.database.Realm.NewsRealm
 import com.example.miquido.rss.database.pojo.News
 
@@ -10,9 +12,12 @@ import com.example.miquido.rss.database.pojo.News
 
 object MapperToNews {
     fun fromRealm(newsRealm: NewsRealm): News {
-        val news = News()
-        news.id = newsRealm.id
-        news.newsTitle = newsRealm.newsTitle
-        return news
+        return News(newsRealm.newsTitle,
+                    newsRealm.newsDate,
+                    newsRealm.newsContent)
+    }
+
+    fun fromItem(item: Item): News {
+        return News(item.title, item.pubDate, item.content)
     }
 }
