@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.miquido.rss.Model.Item
 import com.example.miquido.rss.Model.RSSObject
 import com.example.miquido.rss.R
+import com.example.miquido.rss.database.pojo.News
 import kotlinx.android.synthetic.main.item.view.*
 import retrofit2.Call
 
@@ -33,28 +34,28 @@ class FeedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         txtContent = itemView.txtContent
     }
 
-    fun bindFun(item: Item){
-        txtTitle.text = item.title
-        txtContent.text = item.content
-        txtPubdate.text = item.pubDate
+    fun bindFun(news: News){
+        txtTitle.text = news.newsTitle
+        txtContent.text = news.newsContent
+        txtPubdate.text = news.newsDate
     }
 
 }
 
-class FeedAdapter(private val rssObject: RSSObject,
+class FeedAdapter(private val newses: List<News>,
                   private val context: Context
     ):RecyclerView.Adapter<FeedViewHolder>(){
 
     override fun getItemCount(): Int {
-        return rssObject.items.size
+        return newses.size
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
 
-        holder.bindFun(rssObject.items[position])
+        holder.bindFun(newses[position])
 
         holder.itemView.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(rssObject.items[position].link))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://damianchodorek.com/kurs-android-baza-danych-realm-20/"))
             context.startActivity(browserIntent)
         }
 
@@ -62,7 +63,6 @@ class FeedAdapter(private val rssObject: RSSObject,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
-        Toast.makeText(context, "adapter " + rssObject.items.size, Toast.LENGTH_SHORT).show()
 
         return FeedViewHolder(view)
     }

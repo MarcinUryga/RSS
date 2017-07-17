@@ -6,18 +6,26 @@ import com.example.miquido.rss.database.Realm.NewsRealm
 import com.example.miquido.rss.database.pojo.News
 
 
+
 /**
  * Created by marci on 2017-07-02.
  */
 
 object MapperToNews {
     fun fromRealm(newsRealm: NewsRealm): News {
-        return News(newsRealm.newsTitle,
+        return News(newsRealm.newsId,
+                    newsRealm.newsURL,
+                    newsRealm.newsTitle,
                     newsRealm.newsDate,
                     newsRealm.newsContent)
     }
 
     fun fromItem(item: Item): News {
-        return News(item.title, item.pubDate, item.content)
+        return News(0,
+                    item.link,
+                    item.title,
+                    item.pubDate,
+                    item.content)
     }
+
 }

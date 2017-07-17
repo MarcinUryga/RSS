@@ -8,7 +8,8 @@ public interface NewsTable {
     String TABLE_NAME = "News_table";
 
     interface Columns{
-    //    String NEWS_ID = "_id";
+        String NEWS_ID = "_id";
+        String NEWS_URL = "news_url";
         String NEWS_TITLE = "news_title";
         String NEWS_DATE = "news_date";
         String NEWS_CONTENT = "news_content";

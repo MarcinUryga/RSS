@@ -22,7 +22,6 @@ class NewsRealmRepository(context: Context) : Repository<News> {
     private val realmConfiguration: RealmConfiguration
     internal var realm: Realm
 
-
     init {
         this.realmConfiguration = RealmConfiguration.Builder(context).build()
         realm = Realm.getInstance(realmConfiguration)
@@ -33,7 +32,7 @@ class NewsRealmRepository(context: Context) : Repository<News> {
 
         realm.executeTransaction { realm ->
             val newsRealm = realm.createObject(NewsRealm::class.java)
-            //newsRealm.id = generateId()
+            newsRealm.newsId = generateId()
             newsRealm.newsTitle = item.newsTitle
             newsRealm.newsDate = item.newsDate
             newsRealm.newsContent = item.newsContent
